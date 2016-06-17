@@ -56,6 +56,7 @@ class DecoratorClass(object):
         self.fn = fn
  
     def __call__(self):
+        print 'will be called when the decorated func is called'
         self.fn()
  
 class DecoratorClassWithArgs(object):
@@ -64,12 +65,14 @@ class DecoratorClassWithArgs(object):
         self.args = args
 
     def __call__(self, func):
+        print 'will be called when __init__ and return _wrapper func'
         def _wrapper(*args, **kw):
             print self.args
             func(*args, **kw)
         return _wrapper
          
 
+############__call__ of DecoratorClassWithArgs should be called when calling __init__############
 @DecoratorClassWithArgs('args')
 # @DecoratorClass
 def fooFun():
