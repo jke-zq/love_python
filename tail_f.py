@@ -1,6 +1,7 @@
 def coroutine(func):
     def start(*args,**kwargs):
         cr = func(*args,**kwargs)
+        # start the generator
         cr.next()
         return cr
     return start
@@ -47,4 +48,5 @@ if __name__ == '__main__':
         print 'enter into finally...'
         access.close()
         error.close()
+
 
