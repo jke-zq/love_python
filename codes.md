@@ -5,3 +5,7 @@ nested_map = collections.defaultdict(lambda :collections.defaultdict(int))
 #usage: nested_map[key][nested_key] += 1
 ~~~
 
+####2.zip and dict
+~~~python
+dict(zip(listkey, listval))
+~~~
