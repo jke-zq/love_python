@@ -9,3 +9,30 @@ nested_map = collections.defaultdict(lambda :collections.defaultdict(int))
 ~~~python
 dict(zip(listkey, listval))
 ~~~
+
+####3.current dir and path
+~~~python
+import os
+# the directory of the script being run
+os.path.dirname(os.path.abspath(__file__))
+# the current working directory
+os.getcwd(
+~~~
+
+####4.reload moudle in python interpreter
+~~~shell
+>>import imp
+>>imp.reload(moudle)
+~~~
+
+####5. nerver use import *
+##### what happend:
+* for package: everyting in "__init__.py"
+* for moudle: everyting in moudel.py && "__all__"
+
+##### why not:
+* Because it puts a lot of stuff into your namespace (might shadow some other object from previous import and you won't know about it).
+* Because you don't know exactly what is imported and can't find place from what module certain thing was imported easily (readability).
+* Because you can't use cool tools like pyflakes to detect statically errors in your code.
+
+#### from package.moudle import func or import package.moudle
