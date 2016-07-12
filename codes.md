@@ -35,4 +35,17 @@ os.getcwd(
 * Because you don't know exactly what is imported and can't find place from what module certain thing was imported easily (readability).
 * Because you can't use cool tools like pyflakes to detect statically errors in your code.
 
-#### from package.moudle import func or import package.moudle
+####6. from package.moudle import func or import package.moudle
+######todo
+
+####7. rsplit
+~~~shell
+>>'3#4#5'.rsplit('#')
+['3', '4', '5']
+>>'3#4#5'.rsplit('#', -1)
+['3', '4', '5']
+>>'3#4#5'.rsplit('#', 1)
+['3#4', '5']
+>>'3#4#5'.rsplit('#', 2)
+['3', '4', '5']
+~~~
