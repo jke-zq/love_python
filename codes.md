@@ -51,4 +51,9 @@ os.getcwd(
 >>'3#4#5'.split('#', 1)
 ['3', '4#5']
 ~~~
+
+####8. read lines from file and remove the \n in the end of the line
+~~~python
+for line in f.readlines(): # not good, maybe files with too many lines
+	line = line.strip('\n')
 ~~~
