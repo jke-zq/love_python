@@ -38,7 +38,7 @@ os.getcwd(
 ####6. from package.moudle import func or import package.moudle
 ######todo
 
-####7. rsplit
+####7. rsplit vs split(from left)
 ~~~shell
 >>'3#4#5'.rsplit('#')
 ['3', '4', '5']
@@ -48,4 +48,7 @@ os.getcwd(
 ['3#4', '5']
 >>'3#4#5'.rsplit('#', 2)
 ['3', '4', '5']
+>>'3#4#5'.split('#', 1)
+['3', '4#5']
+~~~
 ~~~
