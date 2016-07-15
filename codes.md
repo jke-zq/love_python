@@ -57,14 +57,3 @@ os.getcwd(
 for line in f.readlines(): # not good, maybe files with too many lines
 	line = line.strip('\n')
 ~~~
-
-####9. isalpha in string or unicode
-* in string: use str.isalpha() to check if str only contains letters
-* in unicode: unicode.isalpha() is to check if it only contains characters in LETTER part.
-* using re to check if unicode only contains letters.
-
-~~~python
-import re
-if re.match(r'[a-zA-Z]+$', data) is None:
-	print 'data doesnt only contain letters'
-~~~
