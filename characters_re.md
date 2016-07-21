@@ -71,7 +71,7 @@ def hex2str(chain):
 * [Conversion functions between binary, hexadecimal and ASCII](http://codereview.stackexchange.com/questions/85079/conversion-functions-between-binary-hexadecimal-and-ascii)
 * [Validate Password Complexity](https://www.safaribooksonline.com/library/view/regular-expressions-cookbook/9781449327453/ch04s19.html)
 
-####3.4-byte char raises MySQL erro:"Incorrect string value"
+####4.4-byte char raises MySQL erro:"Incorrect string value"
 [Warning raised by inserting 4-byte unicode to mysql](http://stackoverflow.com/questions/10798605/warning-raised-by-inserting-4-byte-unicode-to-mysql)
 
 If MySQL cannot handle UTF-8 codes of 4 bytes or more then you'll have to filter out all unicode characters over codepoint \U00010000; UTF-8 encodes codepoints below that threshold in 3 bytes or fewer.
@@ -117,3 +117,53 @@ except re.error:
     highpoints = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
 ~~~
 Qing ZHao: if your python is using UCS-4, you can "list(unicode)" or "for u in unicode". But if your python is using UCS-2, you can split one 4-bytes unicode into two 2-bytes unicodes.
+
+####5. str vs unicode
+[Python str vs unicode types](http://stackoverflow.com/questions/18034272/python-str-vs-unicode-types)
+
+unicode, which is python 3's str, is meant to handle text. Text is a sequence of code points which may be bigger than a single byte. Text can be encoded in a specific encoding to represent the text as raw bytes(e.g. utf-8, latin-1...). Note that unicode is not encoded! The internal representation used by python is an implementation detail, and you shouldn't care about it as long as it is able to represent the code points you want.
+
+On the contrary str is a plain sequence of bytes. It does not represent text! In fact, in python 3 str is called bytes.
+
+You can think of unicode as a general representation of some text, which can be encoded in many different ways into a sequence of binary data represented via str.
+
+Some differences that you can see:
+
+~~~shell
+>>> len(u'à')  # a single code point
+1
+>>> len('à')   # by default utf-8 -> takes two bytes
+2
+>>> len(u'à'.encode('utf-8'))
+2
+>>> len(u'à'.encode('latin1'))  # in latin1 it takes one byte
+1
+>>> print u'à'.encode('utf-8')  # terminal encoding is utf-8
+à
+>>> print u'à'.encode('latin1') # it cannot understand the latin1 byte
+�
+~~~
+Note that using str you have a lower-level control on the single bytes of a specific encoding representation, while using unicode you can only control at the code-point level. For example you can do:
+
+~~~shell
+>>> 'àèìòù'
+'\xc3\xa0\xc3\xa8\xc3\xac\xc3\xb2\xc3\xb9'
+>>> print 'àèìòù'.replace('\xa8', '')
+à�ìòù
+~~~
+What before was valid UTF-8, isn't anymore. Using a unicode string you cannot operate in such a way that the resulting string isn't valid unicode text. You can remove a code point, replace a code point with a different code point etc. but you cannot mess with the internal representation.
+ When you want to save some text(e.g. to a file) you have to represent it with bytes, i.e. you must encode it. When retrieving the content you should know the encoding that was used, in order to be able to decode the bytes into a unicode object.
+
+NEED TO BE READ:
+[Screwing up Python compatibility: unicode(), str(), and bytes()](http://blog.labix.org/2009/07/02/screwing-up-python-compatibility-unicode-str-bytes)
+
+####6. "__str__" vs "__unicode__"
+[Python __str__ versus __unicode__](http://stackoverflow.com/questions/1307014/python-str-versus-unicode)
+
+"__str__()" is the old method -- it returns bytes. "__unicode__()" is the new, preferred method -- it returns characters. The names are a bit confusing, but in 2.x we're stuck with them for compatibility reasons. Generally, you should put all your string formatting in "__unicode__()", and create a stub "__str__()" method:
+
+~~~python
+def __str__(self):
+    return unicode(self).encode('utf-8')
+~~~
+In 3.0, str contains characters, so the same methods are named "__bytes__()" and "__str__()". These behave as expected.
