@@ -10,6 +10,7 @@ def multipliers():
     return [lambda x, j=i : j * x for i in range(4)]
 
 # using partial
+# note: partial will bind parameters with values from left to right, whether if default parameters.
 from functools import partial
 from operator import mul
 
