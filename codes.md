@@ -8,6 +8,15 @@ nested_map = collections.defaultdict(lambda :collections.defaultdict(int))
 ####2.zip and dict
 ~~~python
 dict(zip(listkey, listval))
+# init dict
+# mapping
+dict(key1='val1', key2='val2')
+# kv
+dict(**kw)
+# iterator
+dict([('key1', 'val1'), ('key2', 'val2')])
+# init defaultdict
+defaultdict(default_factor, other_paramters_same_with_dict)
 ~~~
 
 ####3.current dir and path
