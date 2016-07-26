@@ -66,3 +66,33 @@ os.getcwd(
 for line in f.readlines(): # not good, maybe files with too many lines
 	line = line.strip('\n')
 ~~~
+
+####8. **kw
+~~~python
+def create(**kw):
+    print kw
+def create_b(a, b, c):
+    print 'a:', a, '#', 'b:', b, '#', 'c:', c
+
+# testing:
+create(**dict(a=1, b= 2))
+maps = {'a':3, 'b':4, 'c':5}
+create(**maps)
+# create_b(**maps)
+# create({'a':2, 'c':3})
+# error:create() takes exactly 0 arguments (1 given)
+# me: just value without key, so no arguments
+# create(maps)
+# error:create() takes exactly 0 arguments (1 given)
+# me: just value without key, so no arguments
+create(a = 4, b = 5)
+
+def foo(a, b, c, d):
+  print a, b, c, d
+
+# testing:
+l = [0, 1]
+d = {"d":3, "c":2}
+# *l will give valus to the first arguments, and left ones will excatly match d(no more no less).
+foo(*l, **d)
+~~~
