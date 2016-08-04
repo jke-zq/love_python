@@ -55,7 +55,28 @@ ends with "?" to show docstr.
 ####8.Edit
 
 * %edit
+
+This will bring up an editor to type multiline code and execute the resulting code
+
+~~~
+In [1]: edit
+IPython will make a temporary file named: /var/folders/5r/h37vsll52vj4d4gsq2zpb_g40000gn/T/ipython_edit_wmMGTs/ipython_edit_Y5TE4y.py
+Editing... done. Executing edited code...
+2016-08-04 21:19:29.469184
+Out[1]: 'import datetime\nprint datetime.datetime.now()\n'
+~~~
+
 * %edit -p
+
+This will bring up the **last** editor to type multiline code and execute the resulting code
+
+~~~
+In [2]: edit -p
+IPython will make a temporary file named: /var/folders/5r/h37vsll52vj4d4gsq2zpb_g40000gn/T/ipython_edit_LIMcyD/ipython_edit_wMFV2K.py
+Editing... done. Executing edited code...
+2016-08-04 21:19:46.964487
+Out[2]: 'import datetime\nprint datetime.datetime.now()\n'
+~~~
 
 ####9.Save commands to file
 This is will save the specific lines to a given file. You can pass any number of arguments separated by space.
