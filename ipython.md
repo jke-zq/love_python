@@ -126,6 +126,7 @@ zhaoqing@onePiece ~/o/my_leetcode> ipython -i ipython_log.py
 ~~~
 ####14.Pastbin
 ~~~
+# past the line 3 to line 4 into github.
 In [5]: pastebin 3-4
 Out[5]: u'https://gist.github.com/498bf5804bfe1ba9d1bc2128c0ee8428'
 ~~~
