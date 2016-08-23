@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 class MyDictUsingDict(dict):
-    # def __repr__(self): 
+    # def __repr__(self):
     #     return repr(self.__dict__)
 
-    # def __len__(self): 
+    # def __len__(self):
     #     return len(self.__dict__)
 
-    # def __delitem__(self, key): 
+    # def __delitem__(self, key):
     #     del self.__dict__[key]
 
     # def clear(self):
@@ -84,7 +84,7 @@ class MyDict(object):
 
 import unittest
 class TestAttrDict(unittest.TestCase):
-    
+
     def setUp(self):
     	# test Mydict class
         self.AttrDict = MyDict
@@ -101,7 +101,13 @@ class TestAttrDict(unittest.TestCase):
         self.assertEquals(my_dict['test'], 123)
         self.assertEquals(my_dict.test, 123)
 
+# dict in python
+def syntax_dict():
+    val = {}
+    # pop the key which not exit without exception
+    # val.pop(key, None)
+    val.pop(1, None)
+    val.setdefault(1, []).extends(range(10))
+
 if __name__ == '__main__':
 	unittest.main()
-
-	
