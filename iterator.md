@@ -7,6 +7,8 @@
 #### 2.List
 ~~~shell
 >>a = [i * i for i in range(10)]
+>># tuple to list
+>>list(tuple_val)
 ~~~
 
 ####3.Controlling a generator exhaustion
