@@ -109,5 +109,11 @@ def syntax_dict():
     val.pop(1, None)
     val.setdefault(1, []).extends(range(10))
 
+    # constructor
+    tuples = zip(range(5), range(5))
+    val = dict(tuples)
+    lists = map(lambda x:list(x), zip(range(5), range(5)))
+    val = dict(lists)
+
 if __name__ == '__main__':
 	unittest.main()
