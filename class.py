@@ -1,3 +1,4 @@
+# 1. access attr of a class
 class Parent(object):
     val = 1
     values = [10]
@@ -23,3 +24,8 @@ if __name__ == '__main__':
 # Instances can access the member of the class and cant reset them using 'instance.val = newVal', but other instances have no effect. 
 # But you can do some operations on them, if and only if the type of the member is mutable.
 # Subclasses are the same.
+
+# 2.getattr vs hasattr
+# https://hynek.me/articles/hasattr/
+# hasattr cant judge the property of an instance
+# using getattr(instance, attr_name, default_val), without parameter:default_val, if attr_name is not the attr of the instance, Exception will be happended.
