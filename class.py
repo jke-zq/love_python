@@ -11,6 +11,7 @@ class  Child2(Parent):
     pass
 
 if __name__ == '__main__':
+    pass
     # p = Parent()
     # p.val = 0:               #using __setattr__ to add member 'val' to p -- the instance of Parent class
     # p.values = 0:            #same as the one above
