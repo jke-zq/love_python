@@ -96,3 +96,16 @@ d = {"d":3, "c":2}
 # *l will give valus to the first arguments, and left ones will excatly match d(no more no less).
 foo(*l, **d)
 ~~~
+
+####9.integer
+~~~python
+#Python Program to Convert Decimal to Binary, Octal and Hexadecimal
+print 60
+print 0b11100
+print 0o74
+print 0x3c
+dec = 344
+bin(dec) #0b101011000
+oct(dec) #0o530
+hex(dec) #0x158
+~~~
